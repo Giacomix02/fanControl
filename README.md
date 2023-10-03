@@ -9,7 +9,7 @@ I cannot guarantee compatibility for all victus laptop
 # Credits for BIOS interface
 This program is based by https://github.com/GeographicCone/OmenHwCtl repository
 
-This repository provide a direct "link" to bios via powershell commands
+This repository provides a direct "link" to bios via powershell commands
 
 # OmenHwCtl Version
 
