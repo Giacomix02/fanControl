@@ -1,0 +1,48 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "fanControl",
+    "version": "1.0.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      },
+      "fs": {
+        "scope": ["$RESOURCE/*"]
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "dev.tauri.com",
+      "icon": [
+        "icons/icon.ico"
+      ],
+      "resources":[
+        "./omen-hub-but-better/OmenHwCtl.ps1"
+      ]
+    },
+    "security": {
+      "csp": null
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": false,
+        "title": "fanControl",
+        "width": 500,
+        "height": 250
+      }
+    ]
+  }
+}
