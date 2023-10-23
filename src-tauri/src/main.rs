@@ -49,21 +49,20 @@ println!("{}", String::from_utf8_lossy(&output.stdout));
 
 }
 
-
-/*
-
 #[tauri::command]
-fn manual(speed:u8){
+fn manual(app_handle: tauri::AppHandle, mode:String){
+
+    let path = path(app_handle);
 
     let output = Command::new("powershell.exe")
     .arg("-ExecutionPolicy")
     .arg("Bypass")
     .arg("-Command")
-    .arg(format!("Start-Process powershell.exe -Verb RunAs -ArgumentList '-ExecutionPolicy Bypass -File \"{}\" -MaxFanSpeed {}' -WindowStyle Hidden", get_path(), speed))
+    .arg(format!("Start-Process powershell.exe -Verb RunAs -ArgumentList '-ExecutionPolicy Bypass -File \"{}\" -SetFanMode {}' -WindowStyle Hidden", path, mode))
     .output()
     .expect("failed to execute process");
     
-}*/
+}
 
 #[tauri::command]
 fn path(handle: tauri::AppHandle) -> String {
@@ -79,7 +78,7 @@ fn main() {
     env::set_var("RUST_BACKTRACE", "1");
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![turbo_off, turbo_on,path])
+        .invoke_handler(tauri::generate_handler![turbo_off, turbo_on,path,manual])
         .run(tauri::generate_context!())
         .expect("error while running application");
 }

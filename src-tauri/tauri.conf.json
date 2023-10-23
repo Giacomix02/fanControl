@@ -29,7 +29,8 @@
         "icons/icon.ico"
       ],
       "resources":[
-        "./omen-hub-but-better/OmenHwCtl.ps1"
+        "./omen-hub-but-better/OmenHwCtl.ps1",
+        "./omen-hub-but-better/"
       ]
     },
     "security": {
@@ -41,7 +42,7 @@
         "resizable": false,
         "title": "fanControl",
         "width": 500,
-        "height": 250
+        "height": 350
       }
     ]
   }

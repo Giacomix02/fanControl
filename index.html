@@ -14,13 +14,24 @@
         <button class="turbo" id="turboOff"> Off turbo </button>
       </div>
 
-      <!-- 
-      <div class = "outer-manual">
-        <input type="text" class="fan-speed" id="fan-speed">
-        <a>%</a>
-        <button class="manual" id="manual">Apply</button>
+      <div class="div-manual">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+       
+        <input type="range" min=0 max=5 step=1 class="range" id="mode-slider" value=0 default=0/>
+
+        
       </div>
-      -->
+
+      <a class="mode" id="mode-info">Default</a>
+
+      <div class="apply-button-outer">
+        <button class="mode-button" id="mode-button">Apply</button>
+      </div>
 
     </div>
   </body>

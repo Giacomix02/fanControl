@@ -1,8 +1,8 @@
 [package]
 name = "fanControl"
 version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+description = "fanControl"
+authors = ["Giacomix"]
 license = ""
 repository = ""
 edition = "2021"

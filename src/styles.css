@@ -31,15 +31,17 @@ button{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
+  /*gap: 5rem;*/
 }
 
 .outer-buttons{
-  padding-top: 4.5rem;
+  padding-top: 3rem;
   justify-content: space-around;
   display: flex;
   flex: 1;
   flex-direction: row;
+  width: 100%;
 }
 
 .outer-manual{
@@ -59,30 +61,80 @@ button{
   width: 5rem;
 }
 
-
-/*
-.manual{
-  background-color: rgb(55, 52, 52);
-  color: white;
-  padding: 10px;
-  border-radius: 100rem;
-  margin-left: 2rem;
-}
-*/
-
-/*
-.fan-speed{
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 100rem;
-  margin-left: 2rem;
-  max-width: 3rem;
-  text-align: center;
-}
-*/
-
-
 .turbo:hover{
+
+  box-shadow: 0px 0px 0px 10px rgb(35, 34, 34);
+  transition: all 0.2s ease-in-out;
+
+}
+
+
+input[type=range]{
+  -webkit-appearance: none;
+  width: 100%;
+accent-color: red;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background: rgb(55, 52, 52);;
+  border: none;
+  --track-height: 0.5rem;  
+  height: var(--track-height);
+}
+
+
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance: none; 
+  height: 2rem;
+  background: red;
+  border-radius: 50rem;
+
+  width: 2rem;
+  transform: translateY(calc(-50% + (var(--track-height) / 2)));
+
+}
+
+
+.div-manual{
+display:flex;
+align-items:center;
+position: relative;
+flex-direction: row;
+justify-content: space-between;
+width: 20rem;
+padding-top: 4rem;
+padding-bottom: 1rem;
+}
+
+.range{
+  position: absolute;
+  z-index:1;
+  /*transform: translateX(-0.10rem)*/
+}
+
+.circle{
+background-color: rgb(55, 52, 52);
+width: 2rem;
+height: 2rem;
+border-radius: 50rem;
+}
+
+.mode{
+  color: white;
+}
+
+.apply-button-outer{
+  margin-top: 1rem
+}
+
+.mode-button{
+  color: white;
+  background-color: rgb(55, 52, 52);
+  padding: 1rem;
+  border-radius: 50rem;
+}
+
+.mode-button:hover{
 
   box-shadow: 0px 0px 0px 10px rgb(35, 34, 34);
   transition: all 0.2s ease-in-out;
