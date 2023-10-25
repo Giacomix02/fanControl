@@ -140,3 +140,7 @@ border-radius: 50rem;
   transition: all 0.2s ease-in-out;
 
 }
+
+.button-red-border{
+  border: solid red;
+}

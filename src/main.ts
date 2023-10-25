@@ -1,5 +1,8 @@
 import { invoke } from '@tauri-apps/api/tauri'
-
+import { db } from './database'
+import {Mode} from './modes'
+import { getModeValue } from './modes'
+import { getModeArgument } from './modes'
 
 let on = document.getElementById('turboOn')! as HTMLButtonElement
 
@@ -11,51 +14,52 @@ let infoMode = document.getElementById('mode-info')! as HTMLAnchorElement
 
 let applyButton = document.getElementById('mode-button') as HTMLButtonElement
 
-
-on.addEventListener('click', () => {
-    invoke('turbo_on')
-})
-
-off.addEventListener('click', () => {
-    invoke('turbo_off')
-})
-
-slider.addEventListener('input', () => {
-    infoMode.innerHTML = values[slider.value as Mode]
-})
-
-applyButton.addEventListener("click",()=>{
-    console.log("test")
-    invoke('manual',{ mode: modeArgument[slider.value as Mode] })
-})
-
-
-enum Mode {
-    Default = "0",
-    Quiet = "1",
-    Cool = "2",
-    Performance = "3",
-    Extreme = "4",
-    Eco = "5"
+const turboOn = async ()=>{
+    await invoke('turbo_on')
+    db.setTurbo(true)
+    on.classList.add("button-red-border")
+    off.classList.remove("button-red-border")
 }
 
-const values = {
-    [Mode.Default]: "Default",
-    [Mode.Quiet]: "Quiet",
-    [Mode.Cool]: "Cool",
-    [Mode.Performance]: "Performance",
-    [Mode.Extreme]: "Extreme",
-    [Mode.Eco]: "Eco"
-}satisfies Record<Mode, string>
+const turboOff = async ()=>{
+    await invoke('turbo_off')
+    db.setTurbo(false)
+    off.classList.add("button-red-border")
+    on.classList.remove("button-red-border")
+}
 
-const modeArgument={
-    [Mode.Default]: "0x0000",
-    [Mode.Quiet]: "0x0003",
-    [Mode.Cool]: "0x0002",
-    [Mode.Performance]: "0x0001",
-    [Mode.Extreme]: "0x0004",
-    [Mode.Eco]: "0x0100"
-}satisfies Record<Mode, string>
+const modeActivation = async ()=>{
+    await invoke('manual',{ mode: getModeArgument(slider.value as Mode)})
+    db.setMode(slider.value as Mode) 
+    
+}
+
+
+on.addEventListener('click', turboOn)
+
+off.addEventListener('click', turboOff)
+
+
+slider.addEventListener('input', () => {
+    infoMode.innerHTML = getModeValue(slider.value as Mode)
+})
+
+applyButton.addEventListener("click", modeActivation)
+
+
+window.addEventListener("load", () => {
+    if(db.getTurbo()){
+        on.classList.add("button-red-border")
+        off.classList.remove("button-red-border")
+    }else{
+        off.classList.add("button-red-border")
+    }
+    if(slider.value !== db.getMode()){ 
+        slider.value = db.getMode()!
+        modeActivation()
+    }
+    
+});
 
 
 
