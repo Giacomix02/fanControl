@@ -1,3 +1,5 @@
+![](/img/screen.jpeg)
+
 # COMPATIBILITY
 
 I cannot guarantee compatibility for all victus laptop
