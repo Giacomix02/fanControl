@@ -56,6 +56,7 @@ window.addEventListener("load", () => {
     }
     if(slider.value !== db.getMode()){ 
         slider.value = db.getMode()!
+        infoMode.innerHTML = getModeValue(slider.value as Mode)
         modeActivation()
     }
     

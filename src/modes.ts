@@ -17,12 +17,12 @@ const modeValues = {
 }satisfies Record<Mode, string>
 
 const modeArgument={
-    [Mode.Default]: "0x0000",
-    [Mode.Quiet]: "0x0003",
-    [Mode.Cool]: "0x0002",
-    [Mode.Performance]: "0x0001",
-    [Mode.Extreme]: "0x0004",
-    [Mode.Eco]: "0x0100"
+    [Mode.Default]: "0x00",
+    [Mode.Quiet]: "0x03",
+    [Mode.Cool]: "0x02",
+    [Mode.Performance]: "0x01",
+    [Mode.Extreme]: "0x04",
+    [Mode.Eco]: "0x01"
 }satisfies Record<Mode, string>
 
 

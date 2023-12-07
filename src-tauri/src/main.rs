@@ -15,7 +15,7 @@ fn turbo_on(app_handle: tauri::AppHandle){
 
     let path = path(app_handle);
     
-    print!("\n\t{}\n", path);
+    //print!("\n\t{}\n", path);
 
     let output = Command::new("powershell.exe")
         .arg("-ExecutionPolicy")
@@ -25,7 +25,10 @@ fn turbo_on(app_handle: tauri::AppHandle){
         .output()
         .expect("failed to execute process");
 
+
+    //show command output
     println!("{}", String::from_utf8_lossy(&output.stdout));
+
 }
 
 #[tauri::command]
@@ -35,7 +38,7 @@ fn turbo_off(app_handle: tauri::AppHandle){
 
     let path = path(app_handle);
 
-    print!("\n\t{}\n",path);
+    //print!("\n\t{}\n",path);
 
     let output = Command::new("powershell.exe")
     .arg("-ExecutionPolicy")
@@ -45,7 +48,7 @@ fn turbo_off(app_handle: tauri::AppHandle){
     .output()
     .expect("failed to execute process");
 
-println!("{}", String::from_utf8_lossy(&output.stdout));
+    println!("{}", String::from_utf8_lossy(&output.stdout));
 
 }
 
@@ -54,6 +57,8 @@ fn manual(app_handle: tauri::AppHandle, mode:String){
 
     let path = path(app_handle);
 
+    print!("{}\n", mode);
+
     let output = Command::new("powershell.exe")
     .arg("-ExecutionPolicy")
     .arg("Bypass")
@@ -61,6 +66,8 @@ fn manual(app_handle: tauri::AppHandle, mode:String){
     .arg(format!("Start-Process powershell.exe -Verb RunAs -ArgumentList '-ExecutionPolicy Bypass -File \"{}\" -SetFanMode {}' -WindowStyle Hidden", path, mode))
     .output()
     .expect("failed to execute process");
+
+    println!("{}", String::from_utf8_lossy(&output.stdout));
     
 }
 
