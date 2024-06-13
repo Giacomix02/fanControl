@@ -1,5 +1,5 @@
 # INSTALLATION
-You can downloand the latest release for **Windows** in the [release page](https://github.com/Giacomix02/fanControl/releases/)
+You can download the latest release for **Windows** in the [release page](https://github.com/Giacomix02/fanControl/releases/)
 
 ## Known issues
 | Problem  | Solution | More infos|
