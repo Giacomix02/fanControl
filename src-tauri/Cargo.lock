@@ -647,7 +647,7 @@ dependencies = [
 
 [[package]]
 name = "fanControl"
-version = "0.0.0"
+version = "2.2.0"
 dependencies = [
  "powershell_script",
  "serde",
