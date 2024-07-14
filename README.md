@@ -5,7 +5,7 @@ You can download the latest release for **Windows** in the [release page](https:
 | Problem  | Solution | More infos|
 | -------- | ------- |-------|
 | The application closes as soon as I launch it  | Check if you have installed WebView2   | Full issue [here](https://github.com/Giacomix02/fanControl/issues/1)|
-| How i can use it for linux? | You can compile the application in your linux system | [Tauri documentation](https://tauri.app/it/v1/guides/building/linux/)|
+| How can i use it for linux? | You can't because the app use windows powershell to execute commands | Full issue [here](https://github.com/Giacomix02/fanControl/issues/2) |
  
 
 # APP OVERVIEW
