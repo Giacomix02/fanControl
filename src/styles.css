@@ -94,7 +94,6 @@ input[type=range]::-webkit-slider-thumb{
 
 }
 
-
 .div-manual{
 display:flex;
 align-items:center;
@@ -134,11 +133,16 @@ border-radius: 50rem;
   border-radius: 50rem;
 }
 
-.mode-button:hover{
+.mode-button:hover:not(:disabled){
 
   box-shadow: 0px 0px 0px 10px rgb(35, 34, 34);
   transition: all 0.2s ease-in-out;
+}
 
+.mode-button:disabled{
+  background-color: rgba(55, 52, 52, 0.438);
+  cursor: not-allowed;
+  
 }
 
 .button-red-border{

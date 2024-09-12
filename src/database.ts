@@ -20,9 +20,13 @@ class DB{
         localStorage.setItem("mode",value)
     }
 
-
     getMode(){
         return localStorage.getItem("mode")
+    }
+
+    deleteAll(){
+        localStorage.setItem("turbo", "false")
+        localStorage.setItem("mode", Mode.Unset)
     }
 }
 

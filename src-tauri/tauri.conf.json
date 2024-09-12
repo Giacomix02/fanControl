@@ -19,6 +19,11 @@
       },
       "fs": {
         "scope": ["$RESOURCE/*"]
+      },
+      "dialog": {
+        "all": false,
+        "save": true,
+        "message": true
       }
     },
     "bundle": {
@@ -42,7 +47,7 @@
         "resizable": false,
         "title": "fanControl",
         "width": 500,
-        "height": 350
+        "height": 400
       }
     ]
   }

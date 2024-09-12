@@ -445,7 +445,7 @@ ForEach($Arg in $Args) {
                     -Replace ' $', '' -Split ' ' `
                     | ForEach-Object { $_ })
             Write-Information $('Set Fan Level to: ' + $FanLevel[0] * 100 + ' & ' + $FanLevel[1] * 100 + ' rpm')
-            Send-OmenBiosWmi -CommandType 0x2E -Data $FanLevel
+            Send-OmenBiosWmi -CommandType 0x2E -Data $FanLevel    # Bios Fan Control REMOVE THE COMMENT
             # Bytes #0 & #1: CPU & GPU Fan Level
         }
         '-SetFanMode' {
@@ -458,6 +458,7 @@ ForEach($Arg in $Args) {
             # 0x00 - Default/Eco, 0x01 - Performance, 0x02 - Cool, 0x03 - Quiet, 0x04 - Extreme (L8)
             # 0x10 - L0, 0x20 - L1, 0x30 - L2, 0x40 - L3, 0x50 - L4, 0x11 - L5, 0x21 - L6, 0x31 - L7
         }
+
         '-SetFanTable' {
             Write-Information 'Set Fan Table'
             [Byte[]] $FanTableData = [Byte[]] @($Args[$NextArg] `

@@ -63,7 +63,7 @@ fn manual(app_handle: tauri::AppHandle, mode:String){
     .arg("-ExecutionPolicy")
     .arg("Bypass")
     .arg("-Command")
-    .arg(format!("Start-Process powershell.exe -Verb RunAs -ArgumentList '-ExecutionPolicy Bypass -File \"{}\" -SetFanMode {}' -WindowStyle Hidden", path, mode))
+    .arg(format!("Start-Process powershell.exe -Verb RunAs -ArgumentList '-ExecutionPolicy Bypass -File \"{}\" -SetFanlevel {}' -WindowStyle Hidden", path, mode))
     .output()
     .expect("failed to execute process");
 
@@ -89,5 +89,3 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running application");
 }
-
-

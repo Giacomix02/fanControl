@@ -1,28 +1,28 @@
 export enum Mode {
     Default = "0",
-    Quiet = "1",
-    Cool = "2",
+    Off = "1",
+    Quiet = "2",
     Performance = "3",
     Extreme = "4",
-    Eco = "5"
+    Unset = "5"
 }
 
 const modeValues = {
-    [Mode.Default]: "Default",
+    [Mode.Off]: "Off",
     [Mode.Quiet]: "Quiet",
-    [Mode.Cool]: "Cool",
+    [Mode.Default]: "Default",
     [Mode.Performance]: "Performance",
-    [Mode.Extreme]: "Extreme",
-    [Mode.Eco]: "Eco"
+    [Mode.Extreme]: "Max",
+    [Mode.Unset]: "Unset"
 }satisfies Record<Mode, string>
 
 const modeArgument={
-    [Mode.Default]: "0x00",
-    [Mode.Quiet]: "0x03",
-    [Mode.Cool]: "0x02",
-    [Mode.Performance]: "0x01",
-    [Mode.Extreme]: "0x04",
-    [Mode.Eco]: "0x01"
+    [Mode.Off]: "0000",
+    [Mode.Quiet]: "0f0f",
+    [Mode.Default]: "1e1e",
+    [Mode.Performance]: "2828",
+    [Mode.Extreme]: "3232",
+    [Mode.Unset]: "unset"
 }satisfies Record<Mode, string>
 
 

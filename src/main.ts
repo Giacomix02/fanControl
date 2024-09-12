@@ -14,6 +14,8 @@ let infoMode = document.getElementById('mode-info')! as HTMLAnchorElement
 
 let applyButton = document.getElementById('mode-button') as HTMLButtonElement
 
+let resetButton = document.getElementById('reset-button') as HTMLButtonElement
+
 const turboOn = async ()=>{
     await invoke('turbo_on')
     db.setTurbo(true)
@@ -29,9 +31,11 @@ const turboOff = async ()=>{
 }
 
 const modeActivation = async ()=>{
-    await invoke('manual',{ mode: getModeArgument(slider.value as Mode)})
-    db.setMode(slider.value as Mode) 
-    
+    if(slider.value as Mode === Mode.Off){
+        alert("Pay attention! Turning off the fan can cause overheating of the system.")
+    }
+    //await invoke('manual',{ mode: getModeArgument(slider.value as Mode)})
+    //db.setMode(slider.value as Mode) 
 }
 
 
@@ -42,9 +46,22 @@ off.addEventListener('click', turboOff)
 
 slider.addEventListener('input', () => {
     infoMode.innerHTML = getModeValue(slider.value as Mode)
+    if(slider.value as Mode === Mode.Unset){
+        applyButton.disabled = true
+    }else{
+        applyButton.disabled = false
+    }
 })
 
 applyButton.addEventListener("click", modeActivation)
+
+resetButton.addEventListener("click", async ()=>{
+    db.deleteAll();
+    slider.value = "5"
+    infoMode.innerHTML = getModeValue(slider.value as Mode)
+    on.classList.remove("button-red-border")
+    off.classList.add("button-red-border")
+})
 
 
 window.addEventListener("load", () => {
@@ -54,13 +71,18 @@ window.addEventListener("load", () => {
     }else{
         off.classList.add("button-red-border")
     }
-    if(slider.value !== db.getMode()){ 
+
+    console.log(db.getMode())
+
+    if(slider.value !== db.getMode() && db.getMode() !== Mode.Unset){ 
         slider.value = db.getMode()!
         infoMode.innerHTML = getModeValue(slider.value as Mode)
         modeActivation()
+    }else{
+        applyButton.disabled = true
+        slider.value = "5"
+        infoMode.innerHTML = getModeValue(slider.value as Mode)
     }
     
 });
-
-
 
